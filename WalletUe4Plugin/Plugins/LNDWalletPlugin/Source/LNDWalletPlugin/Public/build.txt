@@ -1,0 +1,352 @@
+Git Bash Colsole Installation
+Because the PowerShell have troubles working with the LND.
+
+
+bitcoind Installation (version)
+Config file
+C:\Users\Andriy\AppData\Local\Bitcoin\bitcoind.conf
+
+--------------------------------
+regtest=1
+listen=0
+
+# server=1 tells Bitcoin-Qt and bitcoind to accept JSON-RPC commands
+server=1
+txindex=1
+
+fallbackfee=0.002
+
+[regtest]
+port=18443
+# JSON-RPC options (for controlling a running Bitcoin/bitcoind process)
+rpcuser=ok
+rpcpassword=ok
+# rpcport=8332
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+
+--------------------------------
+
+ The golang installation.
+
+--------------------------------
+
+Buind curl
+
+--------------------------------
+
+Build LND (v0.10.3-beta.rc1)
+
+Верися lnd: build: bump version to v0.10.3-beta.rc1  (c7c52c5e509c51e4ded6f38a9dd51b6c8e0c3745)
+
+PS C:\Users\Andriy> go get -d github.com/lightningnetwork/lnd
+
+cd C:\Users\SomeUser\go\github.com\lightningnetwork\lnd
+
+В SmartGit чекнуть Tags: v0.10.3-beta.rc1 или можно попробовать:
+git reset --hard c7c52c5e509c51e4ded6f38a9dd51b6c8e0c3745
+
+
+PS C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\cmd\lnd> go build .
+go: downloading github.com/jessevdk/go-flags v1.4.0
+go: downloading github.com/btcsuite/btclog v0.0.0-20170628155309-84c8d2346e9f
+go: downloading github.com/btcsuite/btcwallet v0.11.1-0.20200612012534-48addcd5591a
+go: downloading github.com/btcsuite/btcd v0.20.1-beta.0.20200515232429-9f0179fd2c46
+go: downloading github.com/btcsuite/btcutil v1.0.2
+go: downloading github.com/jrick/logrotate v1.0.0
+go: downloading golang.org/x/crypto v0.0.0-20190211182817-74369b46fc67
+go: downloading github.com/btcsuite/btcutil/psbt v1.0.2
+go: downloading github.com/lightninglabs/neutrino v0.11.1-0.20200316235139-bffc52e8f200
+go: downloading github.com/lightninglabs/gozmq v0.0.0-20191113021534-d20a764486bf
+go: downloading gopkg.in/macaroon-bakery.v2 v2.0.1
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/tv42/zbase32 v0.0.0-20160707012821-501572607d02
+go: downloading github.com/btcsuite/btcwallet/walletdb v1.3.3
+go: downloading github.com/NebulousLabs/go-upnp v0.0.0-20180202185039-29b680b06c82
+go: downloading github.com/btcsuite/btcwallet/wtxmgr v1.2.0
+go: downloading github.com/ltcsuite/ltcd v0.0.0-20190101042124-f37f8bf35796
+go: downloading github.com/btcsuite/btcwallet/wallet/txauthor v1.0.0
+go: downloading google.golang.org/grpc v1.19.0
+go: downloading github.com/lightningnetwork/lightning-onion v1.0.1
+go: downloading github.com/rogpeppe/fastuuid v1.2.0
+go: downloading github.com/jackpal/go-nat-pmp v0.0.0-20170405195558-28a68d0c24ad
+go: downloading github.com/NebulousLabs/fastrand v0.0.0-20181203155948-6fb6489aac4e
+go: downloading google.golang.org/genproto v0.0.0-20190201180003-4b09977fb922
+go: downloading github.com/go-errors/errors v1.0.1
+go: downloading github.com/aead/siphash v1.0.1
+go: downloading github.com/grpc-ecosystem/grpc-gateway v1.8.6
+go: downloading github.com/btcsuite/btcwallet/wallet/txrules v1.0.0
+go: downloading golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
+go: downloading gopkg.in/macaroon.v2 v2.0.0
+go: downloading github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da
+go: downloading golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5
+go: downloading github.com/golang/protobuf v1.3.1
+go: downloading github.com/btcsuite/websocket v0.0.0-20150119174127-31079b680792
+go: downloading github.com/jackpal/gateway v1.0.5
+go: downloading golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
+go: downloading github.com/btcsuite/btcwallet/wallet/txsizes v1.0.0
+go: downloading github.com/miekg/dns v0.0.0-20171125082028-79bfde677fa8
+go: downloading gopkg.in/errgo.v1 v1.0.1
+go: downloading github.com/Yawning/aez v0.0.0-20180114000226-4dad034d9db2
+go: downloading github.com/kkdai/bstream v0.0.0-20181106074824-b3251f7901ec
+go: downloading github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
+go: downloading github.com/Yawning/bsaes v0.0.0-20180720073208-c0276d75487e
+go: downloading go.etcd.io/bbolt v1.3.5-0.20200615073812-232d8fc87f50
+go: downloading github.com/juju/loggo v0.0.0-20190526231331-6e530bcce5d8
+go: downloading github.com/btcsuite/go-socks v0.0.0-20170105172521-4720035b7bfd
+go: downloading golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
+PS C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\cmd\lnd>
+
+
+
+
+Config file
+C:\Users\Andriy\AppData\Local\Lnd\lnd.conf
+
+---------------------------------
+[Application Options]
+rpclisten=localhost:10009
+
+[Bitcoin]
+bitcoin.active=1
+bitcoin.regtest=true
+bitcoin.node=bitcoind
+
+[Bitcoind]
+bitcoind.rpcuser=ok
+bitcoind.rpcpass=ok
+bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
+bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+
+---------------------------------
+
+
+Basic set of commands for working from the console
+
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Downloads/bitcoin-0.17.1-win64/bitcoin-0.17.1/bin
+$ ./bitcoind.exe --datadir=C:/Users/Andriy/AppData/Local/Bitcoin
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+
+
+---------------------------------------------------------------------
+
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": ["p2sh-segwit", "p2sh-segwit"] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+
+{"result":"2N7ZLJrFxT4oAQGkjnCKSzQR42wyxouCMAA","error":null,"id":"curltest"}
+
+
+----------------------------------------------------------------------
+Начиная с версии 0.17 команда generate считается устаревшей. Поэтому нужно использовать generatetoaddress.
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "generatetoaddress", "params": [101, "2N7ZLJrFxT4oAQGkjnCKSzQR42wyxouCMAA"] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+
+
+----------------------------------------------------------------------
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbalance", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+{"result":50.00000000,"error":null,"id":"curltest"}
+
+
+----------------------------------------------------------------------
+Запуск узла.
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/go/src/github.com/lightningnetwork/lnd/cmd/lnd (master)$ ./lnd.exe --datadir=C:/Users/Andriy/AppData/Local/Lnd
+
+Создание кошелька.
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/go/src/github.com/lightningnetwork/lnd/cmd/lncli (master)$ ./lncli.exe --lnddir=C:/Users/Andriy/AppData/Local/Lnd --chain bitcoin --network regtest create
+
+Разблокировака кошелька.
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/go/src/github.com/lightningnetwork/lnd/cmd/lncli (master)$ ./lncli.exe --lnddir=C:/Users/Andriy/AppData/Local/Lnd unlock
+
+
+----------------------------------------------------------------------
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/go/src/github.com/lightningnetwork/lnd/cmd/lncli (master)
+$ ./lncli.exe --lnddir=C:/Users/Andriy/AppData/Local/Lnd --chain bitcoin --network regtest newaddress p2wkh
+{
+    "address": "bcrt1qs6gz6u460eja5xm4n2vjqeztfvakal28g5a3kg"
+}
+
+-----------------------------------------------------------------------
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["bcrt1qs6gz6u460eja5xm4n2vjqeztfvakal28g5a3kg", 1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+{"result":"1cdc0656b098a453b862229eed7985dffa5c8879cf0c3b4ad90591d9339f27a7","error":null,"id":"curltest"}
+
+
+----------------------------------------------------------------------
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/Documents/libcurl/curl/builds/libcurl-vc15-x64-debug-static-ipv6-sspi-winssl/bin ((curl-7_55_1))
+$ ./curl.exe --user ok:ok --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "generatetoaddress", "params": [1, "2N7ZLJrFxT4oAQGkjnCKSzQR42wyxouCMAA"] }' -H 'content-type: text/plain;' http://127.0.0.1:18443/
+{"result":["0a675af98a0224b9bfeaf23fceb42c756e5288ae9dc8962a6021603a6c3a6337"],"error":null,"id":"curltest"}
+
+
+----------------------------------------------------------------------
+
+
+Andriy@DESKTOP-5O5NCJT MINGW64 ~/go/src/github.com/lightningnetwork/lnd/cmd/lncli (master)
+$ ./lncli.exe --lnddir=C:/Users/Andriy/AppData/Local/Lnd --chain bitcoin --network regtest walletbalance
+{
+    "total_balance": "100000000",
+    "confirmed_balance": "100000000",
+    "unconfirmed_balance": "0"
+}
+
+----------------------------------------------------------------------
+
+possible errors:
+
+https://github.com/lightningnetwork/lnd/pull/1693
+https://github.com/lightningnetwork/lnd/issues/1494
+https://github.com/lightningnetwork/lnd/issues/1056
+https://github.com/lightningnetwork/lnd/issues/1938
+
+
+
+=============================================================================================
+
+
+GRPC Build.
+
+The Unreal Engine 4 is stil using the Visual Studio 2017 as default.
+Every library must to be compiled by the Visual Studio 2017.
+Visual Studio 2017 installation.
+Visual Studio version changes.
+
+
+We can build from the sources.
+https://github.com/grpc/grpc/blob/v1.28.1/BUILDING.md
+
+NASM Installation - yeah            !!!
+
+> git clone -b RELEASE_TAG_HERE https://github.com/grpc/grpc
+> cd grpc
+> git submodule update --init
+
+-----------
+
+We can do it like this.
+PS C:\Users\Andriy\Documents\lndrpc_cpp> git clone --recurse-submodules -b v1.28.x https://github.com/grpc/grpc
+
+----------
+
+
+Выбор архитектуры:
+cmake --help
+
+* Visual Studio 16 2019        = Generates Visual Studio 2019 project files.
+                                 Use -A option to specify architecture.
+  Visual Studio 15 2017 [arch] = Generates Visual Studio 2017 project files.
+                                 Optional [arch] can be "Win64" or "ARM".
+
+
+
+cd C:\Users\Andriy\Documents\lndrpc_cpp\grpc2017\cmake\build_new
+call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+cmake ..\.. -G "Visual Studio 15 2017 Win64" -D_WIN32_WINNT=0x0A00 -DgRPC_INSTALL=ON -DCMAKE_BUILD_TYPE=module -DgRPC_ABSL_PROVIDER=module -DgRPC_CARES_PROVIDER=module -DgRPC_PROTOBUF_PROVIDER=module  -DgRPC_SSL_PROVIDER=module -DgRPC_ZLIB_PROVIDER=module -DCMAKE_INSTALL_PREFIX=C:\Users\Andriy\Documents\lndrpc_cpp\grpc2017_bin_new
+
+Должно будет вывести в начале:
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/cl.exe
+
+т.е - мы видим x64
+
+cmake --build . --config Release --target install
+
+
+
+--------------------------------------------------------------
+
+DUMPBIN.EXE /SYMBOLS .\lndcppclient.lib > ./out1.txt
+dumpbin.exe .\cares.lib /headers
+
+--------------------------------------------------------------
+
+
+
+=======================================================================================================================
+Использую я Win10, Visual Studio 2019, НОО:
+В также установлена Visual Studio 2017 и в PATH прописано:
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\SDK\ScopeCppSDK\VC\bin
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja
+
+А потом уже:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\SDK\ScopeCppSDK\vc15\VC\bin
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja
+
+!!!!! Но Ninja я не использую для сборки. Только Cmake + Visual Studio Win64.
+
+
+Windows, Using Ninja (faster build).
+
+!!! open Developen command promt vor VS 2017 (from the Windows menu)
+and
+
+> @rem Run from grpc directory after cloning the repo with --recursive or updating submodules.
+> cd cmake
+> md build
+> cd build
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> cmake ..\.. -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" -D_WIN32_WINNT=0x0A00 -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=C:\Users\Andriy\Documents\lndrpc_cpp\grpc2017_bin
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> cmake --build . --config Release --target install
+
+There is a bug, if we try to build a dll:
+PS C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> cmake ..\.. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" -D_WIN32_WINNT=0x0A00 -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll_bin -DBUILD_SHARED_LIBS=ON
+
+bug: https://github.com/grpc/grpc/issues/22576
+
+
+----------------------------------
+
+
+building with modules ( и это как бы окончательный результат для Ninja как статики, а для динамики баг ):
+
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> cmake ..\.. -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" -D_WIN32_WINNT=0x0A00 -DCMAKE_INSTALL_PREFIX=C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll_bin -DgRPC_INSTALL=ON -DCMAKE_BUILD_TYPE=module -DgRPC_ABSL_PROVIDER=module -DgRPC_CARES_PROVIDER=module -DgRPC_PROTOBUF_PROVIDER=module -DgRPC_SSL_PROVIDER=module -DgRPC_ZLIB_PROVIDER=module
+C:\Users\Andriy\Documents\lndrpc_cpp\grpc_dll\cmake\build> cmake --build . --config Release --target install
+
+
+
+----------------------------------
+
+The protobuf build.
+
+C:\Users\Andriy\Downloads\protoc-3.11.2-win64\bin\protoc.exe -I=C:\Users\Andriy\Downloads\protoc-3.11.2-win64\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis -I=C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc --grpc_out . --plugin=protoc-gen-grpc="C:/Users/Andriy/Documents/lndrpc_cpp/grpc_bin/bin/grpc_cpp_plugin.exe" --cpp_out=. C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc\rpc.proto
+
+grpc-gateway подгрузится при сборке LND.
+C:\Users\Andriy\Downloads\protoc-3.11.2-win64\bin\protoc.exe -I=C:\Users\Andriy\Downloads\protoc-3.11.2-win64\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis --cpp_out=. --proto_path=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis\google\api annotations.proto
+C:\Users\Andriy\Downloads\protoc-3.11.2-win64\bin\protoc.exe -I=C:\Users\Andriy\Downloads\protoc-3.11.2-win64\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis --cpp_out=. --proto_path=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis\google\api http.prot
+
+Пробуем protoc из grpc который мы построили: 
+
+C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\bin\protoc.exe -I=C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis -I=C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc --grpc_out . --plugin=protoc-gen-grpc="C:/Users/Andriy/Documents/lndrpc_cpp/grpc_bin/bin/grpc_cpp_plugin.exe" --cpp_out=. C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc\rpc.proto
+
+C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\bin\protoc.exe -I=C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis --cpp_out=. --proto_path=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis\google\api annotations.proto
+C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\bin\protoc.exe -I=C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis --cpp_out=. --proto_path=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis\google\api http.proto
+
+Получается тоже самое - файлы идентичны.
+
+Далее еще понадобится (что бы оплатить payment request)
+
+C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\bin\protoc.exe -I=C:\Users\Andriy\Downloads\grpc-1.28.0_release_2017\bin\include -I=C:\Users\Andriy\go\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis -I=C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc -I=C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc\routerrpc --grpc_out . --plugin=protoc-gen-grpc="C:/Users/Andriy/Documents/lndrpc_cpp/grpc_bin/bin/grpc_cpp_plugin.exe" --cpp_out=. C:\Users\Andriy\go\src\github.com\lightningnetwork\lnd\lnrpc\routerrpc\router.proto
+
+
+
+=============================================
+
+
+
+
+Install UE4(version)
+Create a Pluggin (empty).
+Include libraries from Build.cs file.
+Next - see the source code of the plugin.
+
+
+
+
